@@ -66,7 +66,12 @@ info <- list(
 data <- list(y = y)
 constants <- list(R = R, J = J)
 
-# out <- runMCMC_fn(info[[1]], data, constants, code, params, ni, nt, nb)
+tictoc::tic()
+out <- runMCMC_fn(info[[1]], data, constants, code, params, ni, nt, nb)
+tictoc::toc()
+
+tictoc::tic()
 out <- runMCMC_para(info, data, constants, code, params, ni, nt, nb)
+tictoc::toc()
 
 plot(out)
