@@ -19,7 +19,9 @@
 #' @return result of one chain
 #' @export
 runMCMC_fn <- function(info, data, constants, code, params, ni, nt, nb) {
-  require(nimble)
+  if (!requireNamespace("nimble", quietly = TRUE)) {
+    stop("The nimble package is required. Please install it.")
+  }
   myModel <- nimble::nimbleModel(code = code,
                          data = data,
                          constants = constants,
